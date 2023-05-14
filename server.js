@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 8000;
 const recipes = require("./routers/recipes");
 const cors = require("cors");
 
-app.use(cors("*"));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -14,6 +13,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
 });
+app.use(cors("*"));
 app.use(recipes);
 
 app.listen(PORT, () => {
